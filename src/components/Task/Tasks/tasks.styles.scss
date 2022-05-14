@@ -1,0 +1,8 @@
+@import '../../../styles/variables.scss';
+
+.tasks {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2vw;
+    justify-content: space-between;
+}

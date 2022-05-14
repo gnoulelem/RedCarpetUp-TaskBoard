@@ -1,0 +1,115 @@
+@import '../../../styles/variables.scss';
+
+.edit-task-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(150, 170, 194, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-content {
+        background-color: $font-color-white;
+        padding: 2vh;
+        width: 30vw;
+        color: $primary-color;
+
+        &-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &-body {
+            margin-top: 2vh;
+
+            & > input {
+                border: none;
+                background-color: $input-grey-color;
+                width: 100%;
+                box-sizing: border-box;
+                margin-bottom: 2vh;
+                padding: 1vh;
+
+                &:focus {
+                    outline: none !important;
+                }
+            }
+
+            & > textarea {
+                border: none;
+                background-color: $input-grey-color;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 1vh;
+
+                &:focus {
+                    outline: none !important;
+                }
+            }
+
+            &-date {
+                margin-top: 1vh;
+                width: 100%;
+
+                & > div {
+
+                    & > label {
+                        display: none;
+                    }
+                }
+
+                & > div > input {
+                    border: none;
+                    background-color: $input-grey-color;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 1vh;
+
+                    &:focus {
+                        outline: none !important;
+                    }
+               }
+
+                & > strong {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .edit-task-modal {
+         
+        &-content {
+            width: 80vw;
+
+            &-body {
+
+                &-date {
+                    display: flex;
+                    justify-content: space-between;
+
+                    & > div {
+
+                        & > input {
+                            opacity: 0;
+                       }
+
+                       & > label {
+                           display: block;
+                       }
+                    }
+
+                    & > strong {
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+}

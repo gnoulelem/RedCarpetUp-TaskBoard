@@ -1,0 +1,41 @@
+@import '../../styles/variables.scss';
+
+.header {
+    background-color: $primary-color;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 2vw 1vh 2vw;
+
+    &-profile {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+    }
+
+    &-logo-container {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $font-color-white;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .header {
+        height: 7vh;
+
+        &-logo-container > span {
+            display: none;
+        }
+
+        &-profile {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+        }
+    }
+}
