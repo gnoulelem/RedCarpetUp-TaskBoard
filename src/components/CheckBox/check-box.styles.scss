@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.check-box {
+
+    & > label {
+        color: $font-color-white;
+        padding-left: 0.5rem;
+    }
+}

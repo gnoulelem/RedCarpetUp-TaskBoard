@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.text-input {
+    margin-bottom: 3vh;
+
+  & > fieldset > legend {
+    color: $font-color-white;
+    text-align: center;
+  }
+
+  & > fieldset > input {
+    background-color: transparent;
+    border: none;
+    color: $font-color-white;
+    width: 30vw;
+    height: 3vh;
+    font-size: 1rem;
+
+    &:focus {
+      outline: none !important;
+    }
+
+    &::placeholder {
+        opacity: 0.3;
+    }
+  }
+}
+
+@media screen and (max-width: 412px){
+    .text-input {
+
+        & > fieldset > input {
+            width: 80vw;
+            font-size: 0.9rem;
+        }
+    }
+}

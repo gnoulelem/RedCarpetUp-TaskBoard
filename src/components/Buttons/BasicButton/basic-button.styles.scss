@@ -1,0 +1,14 @@
+@import '../../../styles//variables.scss';
+@import '../../../styles//mixins.scss';
+
+.basic-button {
+
+     & > button {
+        border: none;
+        color: $primary-color;
+        padding: 2vh 7vw 2vh 7vw;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 7vh;
+     }
+}

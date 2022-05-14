@@ -1,0 +1,9 @@
+@import '../../styles/variables.scss';
+
+.auth-layout {
+    height: 100vh;
+    background-color: $primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

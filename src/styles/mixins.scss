@@ -1,0 +1,7 @@
+@import './variables.scss';
+
+@mixin form-heading {
+    font-size: $form-heading-font-size;
+    font-weight: 600;
+    text-align: center;
+}
