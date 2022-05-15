@@ -1,0 +1,26 @@
+@import '../../styles/variables.scss';
+
+.loader {
+    margin-top: 2vh;
+    display: flex;
+    gap: 1rem;
+    color: $font-color-white;
+
+    & > img {
+        width: 2rem;
+        animation: rotation 2s infinite linear;
+    }
+
+    & > p {
+        font-size: 1.5rem;
+    }
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
