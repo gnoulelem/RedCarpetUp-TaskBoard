@@ -9,6 +9,7 @@ import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
   apiKey: "AIzaSyCWFGRKd0Zoix7PoMuQbjiSQWXckHor_IQ",
   authDomain: "redcarpetup-taskboard.firebaseapp.com",
+  databaseURL: "https://redcarpetup-taskboard-default-rtdb.firebaseio.com",
   projectId: "redcarpetup-taskboard",
   storageBucket: "redcarpetup-taskboard.appspot.com",
   messagingSenderId: "344871326601",

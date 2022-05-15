@@ -6,11 +6,18 @@
 
     &-content {
         @include modal-content;
-        // display: flex;
         gap: 1rem;
 
-        & > input {
+        & > img {
+            cursor: pointer;
+        }
+
+        & > form > input {
             @include modal-input;
+        }
+
+        &-loader {
+            margin-top: 1vh;
         }
     }
 }

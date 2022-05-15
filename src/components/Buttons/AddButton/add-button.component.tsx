@@ -6,11 +6,12 @@ import './add-button.styles.scss';
 type AddButtonProps = {
   label: string;
   size: string;
+  onClick?: any;
 };
 
-const AddButton: React.FC<AddButtonProps> = ({ label, size }) => {
+const AddButton: React.FC<AddButtonProps> = ({ label, size, onClick }) => {
   return (
-    <div className="add-button">
+    <div className="add-button" onClick={onClick}>
       <button
         style={
           size === 'small'

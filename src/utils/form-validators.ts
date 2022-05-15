@@ -22,3 +22,11 @@ export const passwordValidator = (password: string): string[] => {
   }
   return errors;
 };
+
+export const newListValidator = (newList: string): string[] => {
+  const errors: string[] = [];
+  if (newList.length < 3) {
+    errors.push('New list name must be at least 3 characters long');
+  }
+  return errors;
+};

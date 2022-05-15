@@ -4,11 +4,11 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-    cursor: pointer;
 
     & > button {
         border: none;
         background-color: $primary-color;
         border-radius: 50%;
+        cursor: pointer;
     }
 }
