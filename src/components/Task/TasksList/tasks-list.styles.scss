@@ -13,11 +13,33 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 1.5vh;
+
+        & > img {
+            cursor: pointer;
+        }
+
+        &-menu {
+            background-color: $font-color-white;
+            position: absolute;
+            border-style: solid;
+            border-width: 0.1rem;
+            padding: 1vh;
+            width: 5vw;
+            margin-left: 13.5vw;
+        }
     }
 }
 
 @media screen and (max-width: 540px) {
     .tasks-list {
         width: 100vw;
+
+        &-header {
+    
+            &-menu {
+                width: 20vw;
+                margin-left: 65vw;
+            }
+        }
     }
 }

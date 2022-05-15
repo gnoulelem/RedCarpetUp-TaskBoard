@@ -21,3 +21,23 @@
         }
     }
 }
+
+.task-content {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-infos {
+        width: 70%;
+
+        &-date {
+            text-align: center;
+            background-color: $modal-bg-color;
+            width: 50%;
+            margin: 1vh auto;
+            padding: 0.3rem;
+            font-weight: bold;
+        }
+    }
+}

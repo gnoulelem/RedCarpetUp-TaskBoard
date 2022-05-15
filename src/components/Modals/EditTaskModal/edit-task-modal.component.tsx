@@ -27,6 +27,9 @@ const EditTaskModal: React.FC<EditTaskModalProps> = () => {
                 <strong>{date}</strong>
             </div>
         </div>
+        <div className="edit-task-modal-content-footer">
+          <button>Save</button>
+        </div>
       </div>
     </div>
   );

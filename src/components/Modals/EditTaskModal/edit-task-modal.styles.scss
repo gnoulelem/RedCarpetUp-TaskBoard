@@ -7,7 +7,7 @@
     top: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(150, 170, 194, 0.6);
+    background-color: $modal-bg-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,6 +79,20 @@
                 }
             }
         }
+
+        &-footer {
+            margin-top: 1vh;
+            display: flex;
+            justify-content: flex-end;
+
+            & > button {
+                background-color: $primary-color;
+                border: none;
+                color: $font-color-white;
+                padding: 1vh;
+                font-size: 1rem;
+            }
+        }
     }
 }
 
@@ -97,11 +111,13 @@
                     & > div {
 
                         & > input {
-                            opacity: 0;
+                            position: absolute;
+                            left: -999px;
                        }
 
                        & > label {
                            display: block;
+                           font-weight: bold;
                        }
                     }
 

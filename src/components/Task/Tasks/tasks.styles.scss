@@ -5,4 +5,11 @@
     flex-wrap: wrap;
     padding: 2vw;
     justify-content: space-between;
+    align-items: flex-start;
+}
+
+.tasks-fab {
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
 }

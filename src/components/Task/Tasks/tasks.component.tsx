@@ -1,22 +1,25 @@
 import React from 'react';
-import { TasksList, EditTaskModal } from 'components';
+import { TasksList, EditTaskModal, AddButton } from 'components';
 
 import './tasks.styles.scss';
 
 type TasksProps = {};
 
 const Tasks: React.FC<TasksProps> = () => {
-    return (
-        <>
-        <div className="tasks">
-            <TasksList />
-            <TasksList />
-            <TasksList />
-            <TasksList />
-        </div>
-        <EditTaskModal />
-        </>
-    );
+  return (
+    <>
+      <div className="tasks">
+        <TasksList />
+        <TasksList />
+        <TasksList />
+        <TasksList />
+      </div>
+      {/* <EditTaskModal /> */}
+      <div className="tasks-fab">
+        <AddButton label="" size="large"/>
+      </div>
+    </>
+  );
 };
 
 export default Tasks;

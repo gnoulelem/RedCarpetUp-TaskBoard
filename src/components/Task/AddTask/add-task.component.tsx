@@ -8,7 +8,7 @@ type AddTaskProps = {};
 const AddTask: React.FC<AddTaskProps> = () => {
     return (
         <div className="add-task">
-            <AddButton />
+            <AddButton label="Add a task" size="small"/>
         </div>
     );
 };
