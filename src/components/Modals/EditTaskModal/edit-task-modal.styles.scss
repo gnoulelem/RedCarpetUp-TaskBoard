@@ -1,22 +1,11 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .edit-task-modal {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: $modal-bg-color;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include modal-container;
 
     &-content {
-        background-color: $font-color-white;
-        padding: 2vh;
-        width: 30vw;
-        color: $primary-color;
+        @include modal-content;
 
         &-header {
             display: flex;
@@ -27,12 +16,7 @@
             margin-top: 2vh;
 
             & > input {
-                border: none;
-                background-color: $input-grey-color;
-                width: 100%;
-                box-sizing: border-box;
-                margin-bottom: 2vh;
-                padding: 1vh;
+                @include modal-input;
 
                 &:focus {
                     outline: none !important;

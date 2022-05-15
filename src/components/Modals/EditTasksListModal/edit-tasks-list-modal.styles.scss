@@ -1,0 +1,26 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.edit-tasks-list-modal {
+    @include modal-container;
+
+    &-content {
+        @include modal-content;
+        // display: flex;
+        gap: 1rem;
+
+        & > input {
+            @include modal-input;
+        }
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .edit-tasks-list-modal {
+
+        &-content {
+            width: 80vw;
+            align-items: center;
+        }
+    }
+}

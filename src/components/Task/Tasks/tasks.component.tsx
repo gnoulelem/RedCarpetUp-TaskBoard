@@ -1,5 +1,5 @@
 import React from 'react';
-import { TasksList, EditTaskModal, AddButton } from 'components';
+import { TasksList, EditTaskModal, AddButton, EditTasksListModal } from 'components';
 
 import './tasks.styles.scss';
 
@@ -15,6 +15,7 @@ const Tasks: React.FC<TasksProps> = () => {
         <TasksList />
       </div>
       {/* <EditTaskModal /> */}
+      <EditTasksListModal />
       <div className="tasks-fab">
         <AddButton label="" size="large"/>
       </div>

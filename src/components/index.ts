@@ -12,6 +12,7 @@ import AddTask from './Task/AddTask/add-task.component';
 import AddButton from './Buttons/AddButton/add-button.component';
 import TaskItem from './Task/TaskItem/task-item.component';
 import EditTaskModal from './Modals/EditTaskModal/edit-task-modal.component';
+import EditTasksListModal from './Modals/EditTasksListModal/edit-tasks-list-modal.component';
 
 export {
   AuthLayout,
@@ -27,5 +28,6 @@ export {
   AddTask,
   AddButton,
   TaskItem,
-  EditTaskModal
+  EditTaskModal,
+  EditTasksListModal
 };

@@ -5,3 +5,36 @@
     font-weight: 600;
     text-align: center;
 }
+
+@mixin modal-container {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: $modal-bg-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin modal-content {
+    background-color: $font-color-white;
+    padding: 2vh;
+    width: 30vw;
+    color: $primary-color;
+}
+
+@mixin modal-input  {
+    border: none;
+    background-color: $input-grey-color;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 2vh;
+    padding: 1vh;
+    
+    &:focus {
+        outline: none !important;
+    }
+}
