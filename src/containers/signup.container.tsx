@@ -3,7 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { SignupForm, Loader } from 'components';
 
 type SignupContainerProps = {
-    navigate: any;
+  navigate: any;
 };
 type SignupContainerState = {
   isLoading: boolean;
@@ -22,7 +22,7 @@ class SignupContainer extends React.Component<
     };
   }
 
-  _submitSignUp = async (email: string, password: string) => {
+  _submitSignUp = async (email: string, password: string): Promise<void> => {
     const auth = getAuth();
     try {
       this.setState({ isLoading: true });

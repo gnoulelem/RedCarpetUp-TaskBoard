@@ -15,7 +15,7 @@ const Tasks: React.FC<TasksProps> = () => {
         <TasksList />
       </div>
       {/* <EditTaskModal /> */}
-      <EditTasksListModal />
+      {/* <EditTasksListModal /> */}
       <div className="tasks-fab">
         <AddButton label="" size="large"/>
       </div>

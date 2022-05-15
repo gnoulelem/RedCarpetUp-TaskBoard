@@ -4,16 +4,19 @@ import {
   usernameValidator,
   passwordValidator,
   emailValidator,
-} from '../../../utils/form-validators';
+} from 'utils/form-validators';
 
 import './signup-form.styles.scss';
 
 type SignupFormProps = {
-    submitSignUp: any;
-    firebaseError: any;
+  submitSignUp: any;
+  firebaseError: string;
 };
 
-const SignupForm: React.FC<SignupFormProps> = ({submitSignUp, firebaseError}) => {
+const SignupForm: React.FC<SignupFormProps> = ({
+  submitSignUp,
+  firebaseError,
+}) => {
   const formRef = useRef<HTMLFormElement>(null);
   const formErrorRef = useRef<HTMLDivElement>(null);
 
@@ -26,17 +29,16 @@ const SignupForm: React.FC<SignupFormProps> = ({submitSignUp, firebaseError}) =>
       ...passwordValidator(form!['password'].value),
       ...emailValidator(form!['email'].value),
     ];
-    if(validationErrors.length) {
-        validationErrors.forEach((error) => {
-            const child = document.createElement('p');
-            child.textContent = error;
-            child.classList.add('form-error');
-            formErrorRef.current!.appendChild(child);
-        });
-        return;
+    if (validationErrors.length) {
+      validationErrors.forEach((error) => {
+        const child = document.createElement('p');
+        child.textContent = error;
+        child.classList.add('form-error');
+        formErrorRef.current!.appendChild(child);
+      });
+      return;
     }
     submitSignUp(form!['email'].value, form!['password'].value);
-    
   };
 
   return (
@@ -44,7 +46,7 @@ const SignupForm: React.FC<SignupFormProps> = ({submitSignUp, firebaseError}) =>
       <p className="signup-form-heading">Sign up</p>
       <div className="signup-form-inputs">
         <div ref={formErrorRef}>
-            {firebaseError && <p className="form-error ">{firebaseError}</p>}
+          {firebaseError && <p className="form-error ">{firebaseError}</p>}
         </div>
         <form ref={formRef} onSubmit={handleSignUp}>
           <TextInput
