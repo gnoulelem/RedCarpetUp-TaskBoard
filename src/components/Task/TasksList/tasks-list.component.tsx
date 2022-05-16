@@ -8,12 +8,14 @@ type TasksListProps = {
   taskList: any;
   removeTaskList: any;
   onAddNewTask: any;
+  onEditTask: any;
 };
 
 const TasksList: React.FC<TasksListProps> = ({
   taskList,
   removeTaskList,
   onAddNewTask,
+  onEditTask
 }) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -37,9 +39,11 @@ const TasksList: React.FC<TasksListProps> = ({
           Delete list
         </div>
         <AddTask onSelected={onAddNewTask} />
-        {Object.values(taskList[1]).map(
+        {Object.entries(taskList[1]).map(
           (task, index) =>
-            typeof task !== 'string' && <TaskItem task={task} key={index} />
+            typeof task[1] !== 'string' && (
+              <TaskItem onEditTask={onEditTask} task={task} key={index} />
+            )
         )}
       </div>
     </>

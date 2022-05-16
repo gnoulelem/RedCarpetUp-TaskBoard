@@ -11,18 +11,21 @@ import './tasks.styles.scss';
 type TasksProps = {
   submitNewList: any;
   removeTaskList: any;
-  submitNewTask: any;
+  submitTask: any;
+  removeTask: any;
   taskLists: any;
 };
 
 const Tasks: React.FC<TasksProps> = ({
   submitNewList,
   taskLists,
-  submitNewTask,
+  submitTask,
+  removeTask,
   removeTaskList,
 }) => {
   const [showEditTaskListModal, setShowEditTaskListModal] = useState(false);
   const [selectedTaskList, setSelectedTaskList] = useState('');
+  const [selectedTask, setSelectedTask] = useState('');
 
   return (
     <>
@@ -30,9 +33,11 @@ const Tasks: React.FC<TasksProps> = ({
         {taskLists &&
           Object.entries(taskLists).map((taskList, index) => (
             <TasksList
-              onAddNewTask={() => {
-                setSelectedTaskList(taskList[0]);
+              onEditTask={(task: any) => {
+                setSelectedTaskList(taskList[0]); 
+                setSelectedTask(task)
               }}
+              onAddNewTask={() => setSelectedTaskList(taskList[0])}
               taskList={taskList}
               removeTaskList={removeTaskList}
               key={index}
@@ -41,8 +46,13 @@ const Tasks: React.FC<TasksProps> = ({
       </div>
       {selectedTaskList && (
         <EditTaskModal
-          submitNewTask={submitNewTask}
-          onCloseModal={() => setSelectedTaskList('')}
+          selectedTask={selectedTask}
+          submitTask={submitTask}
+          removeTask={removeTask}
+          onCloseModal={() => {
+            setSelectedTaskList('');
+            setSelectedTask('');
+          }}
           selectedTaskList={selectedTaskList}
         />
       )}

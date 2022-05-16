@@ -70,29 +70,49 @@ class TaskContainer extends React.Component<
     const db = getDatabase();
     const user = this.state.user;
     try {
-      const taskListRef = ref(
-        db,
-        `task-lists/${user.uid}/${listId}`
-      );
-      remove(taskListRef);
+      const taskListRef = ref(db, `task-lists/${user.uid}/${listId}`);
+      await remove(taskListRef);
     } catch (error) {
       console.log(error);
     }
   };
 
-  _submitNewTask = async (listId: string, task: Task): Promise<void> => {
+  _submitTask = async (
+    listId: string,
+    task: Task,
+    taskId?: string
+  ): Promise<void> => {
     const user = this.state.user;
     const db = getDatabase();
     try {
-      const taskRef = ref(db, `task-lists/${user.uid}/${listId}`)
-      const newTaskRef = push(taskRef);
-      await set(newTaskRef, {
-        heading: task.heading,
-        details: task.details,
-        date: task.date
-      });
+      const taskRef = ref(db, `task-lists/${user.uid}/${listId}/${taskId}`);
+      if (taskId) {
+        await set(taskRef, {
+          heading: task.heading,
+          details: task.details,
+          date: task.date,
+        });
+      } else {
+        const newTaskRef = push(taskRef);
+        await set(newTaskRef, {
+          heading: task.heading,
+          details: task.details,
+          date: task.date,
+        });
+      }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  _removeTask = async (listId: string, taskId: string): Promise<void> => {
+    const user = this.state.user;
+    const db = getDatabase();
+    try {
+      const taskRef = ref(db, `task-lists/${user.uid}/${listId}/${taskId}`);
+      await remove(taskRef);
+    } catch (error) {
+      console.log(JSON.stringify(error));
     }
   };
 
@@ -101,7 +121,8 @@ class TaskContainer extends React.Component<
       <Tasks
         submitNewList={this._submitNewList}
         removeTaskList={this._removeTaskList}
-        submitNewTask={this._submitNewTask}
+        submitTask={this._submitTask}
+        removeTask={this._removeTask}
         taskLists={this.state.taskLists}
       />
     );
