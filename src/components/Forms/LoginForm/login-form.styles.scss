@@ -9,6 +9,7 @@
      }
 
     &-inputs {
+        margin-bottom: 3vh;
 
          &-props {
             width:  100%;
@@ -25,5 +26,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    &-link {
+        color: $font-color-white;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

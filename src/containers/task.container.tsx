@@ -85,14 +85,15 @@ class TaskContainer extends React.Component<
     const user = this.state.user;
     const db = getDatabase();
     try {
-      const taskRef = ref(db, `task-lists/${user.uid}/${listId}/${taskId}`);
       if (taskId) {
+        const taskRef = ref(db, `task-lists/${user.uid}/${listId}/${taskId}`);
         await set(taskRef, {
           heading: task.heading,
           details: task.details,
           date: task.date,
         });
       } else {
+        const taskRef = ref(db, `task-lists/${user.uid}/${listId}`);
         const newTaskRef = push(taskRef);
         await set(newTaskRef, {
           heading: task.heading,

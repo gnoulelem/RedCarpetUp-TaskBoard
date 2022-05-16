@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from "react-router-dom";
 import { TextInput, Checkbox, BasicButton } from 'components';
 import {
   usernameValidator,
@@ -71,6 +72,7 @@ const SignupForm: React.FC<SignupFormProps> = ({
           </div>
         </form>
       </div>
+      <Link className="signup-form-link" to="/login">Login into your account</Link>
     </div>
   );
 };

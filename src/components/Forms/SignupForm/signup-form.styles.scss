@@ -8,9 +8,22 @@
         @include form-heading;
     }
 
+    &-inputs {
+        margin-bottom: 3vh;
+    }
+
     &-button {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    &-link {
+        color: $font-color-white;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

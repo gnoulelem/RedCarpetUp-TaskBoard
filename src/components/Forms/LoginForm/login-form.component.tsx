@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from "react-router-dom";
 import { TextInput, Checkbox, BasicButton } from 'components';
 import { passwordValidator, emailValidator } from 'utils/form-validators';
 
@@ -57,15 +58,13 @@ const LoginForm: React.FC<LoginFormProps> = ({
           />
           <div className="login-form-inputs-props">
             <Checkbox label="Remember me" />
-            <div className="login-form-inputs-props-forgotten-password">
-              Forgot Password ?
-            </div>
           </div>
           <div className="login-form-button">
             <BasicButton label="Log in" />
           </div>
         </form>
       </div>
+      <Link className="login-form-link" to="/signup">Create a new account</Link>
     </div>
   );
 };

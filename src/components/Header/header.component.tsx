@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getAuth, signOut } from 'firebase/auth';
 
 import logo from '../../assets/logo.png';
@@ -8,6 +8,11 @@ type HeaderProps = {};
 
 const Header: React.FC<HeaderProps> = () => {
   const [showLogout, setShowLogout] = useState(false);
+  const [profile, setProfile] = useState('');
+
+  useEffect(() => {
+    getProfilePhoto();
+  }, []);
 
   const handleLogout = async (): Promise<void> => {
     const auth = getAuth();
@@ -18,6 +23,12 @@ const Header: React.FC<HeaderProps> = () => {
     }
   };
 
+  const getProfilePhoto = async (): Promise<void> => {
+    const response = await fetch('https://picsum.photos/id/29/info');
+    const data = await response.json();
+    setProfile(data.download_url);
+  };
+
   return (
     <header className="header">
       <div className="header-logo-container">
@@ -25,7 +36,7 @@ const Header: React.FC<HeaderProps> = () => {
       </div>
       <img
         onClick={() => setShowLogout(!showLogout)}
-        src="https://picsum.photos/id/77/1631/1102"
+        src={profile}
         alt="Profile"
         className="header-profile"
       />
