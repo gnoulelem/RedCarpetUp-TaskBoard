@@ -22,7 +22,6 @@ const EditTasksListModal: React.FC<EditTasksListModalProps> = ({
     preventDefault: () => void;
   }): Promise<void> => {
     e.preventDefault();
-    setLoading(true);
     const form = formRef.current;
     formErrorRef.current!.innerHTML = '';
     const validationErrors = [...newListValidator(form!['new-list'].value)];
@@ -35,6 +34,7 @@ const EditTasksListModal: React.FC<EditTasksListModalProps> = ({
       });
       return;
     }
+    setLoading(true);
     await submitNewList(form!['new-list'].value);
     setLoading(false);
     onClose();

@@ -30,7 +30,6 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({
     preventDefault: () => void;
   }): Promise<void> => {
     e.preventDefault();
-    setLoading(true);
     const form = formRef.current;
     const validationErrors = [...taskHeadingValidator(form!['heading'].value)];
     if (validationErrors.length) {
@@ -42,6 +41,7 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({
       });
       return;
     }
+    setLoading(true);
     await submitTask(
       selectedTaskList,
       new Task({
