@@ -3,14 +3,16 @@ import { AddButton } from 'components';
 
 import './add-task.styles.scss';
 
-type AddTaskProps = {};
+type AddTaskProps = {
+    onSelected: any;
+};
 
-const AddTask: React.FC<AddTaskProps> = () => {
-    return (
-        <div className="add-task">
-            <AddButton label="Add a task" size="small"/>
-        </div>
-    );
+const AddTask: React.FC<AddTaskProps> = ({ onSelected }) => {
+  return (
+    <div onClick={onSelected} className="add-task">
+      <AddButton label="Add a task" size="small" />
+    </div>
+  );
 };
 
 export default AddTask;

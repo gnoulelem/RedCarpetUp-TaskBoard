@@ -9,8 +9,11 @@ import {
   remove,
 } from 'firebase/database';
 import { Tasks } from 'components';
+import { Task } from 'models';
 
-type TaskContainerProps = {};
+type TaskContainerProps = {
+  navigate: any;
+};
 type TaskContainerState = {
   user: any;
   taskLists: any;
@@ -35,7 +38,7 @@ class TaskContainer extends React.Component<
         this.setState({ user });
         this._subscribeToTaskLists(user);
       } else {
-        console.log('user signed out');
+        this.props.navigate('/login');
       }
     });
   }
@@ -65,12 +68,29 @@ class TaskContainer extends React.Component<
 
   _removeTaskList = async (listId: string): Promise<void> => {
     const db = getDatabase();
+    const user = this.state.user;
     try {
       const taskListRef = ref(
         db,
-        `task-lists/${this.state.user.uid}/${listId}`
+        `task-lists/${user.uid}/${listId}`
       );
       remove(taskListRef);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  _submitNewTask = async (listId: string, task: Task): Promise<void> => {
+    const user = this.state.user;
+    const db = getDatabase();
+    try {
+      const taskRef = ref(db, `task-lists/${user.uid}/${listId}`)
+      const newTaskRef = push(taskRef);
+      await set(newTaskRef, {
+        heading: task.heading,
+        details: task.details,
+        date: task.date
+      });
     } catch (error) {
       console.log(error);
     }
@@ -81,6 +101,7 @@ class TaskContainer extends React.Component<
       <Tasks
         submitNewList={this._submitNewList}
         removeTaskList={this._removeTaskList}
+        submitNewTask={this._submitNewTask}
         taskLists={this.state.taskLists}
       />
     );

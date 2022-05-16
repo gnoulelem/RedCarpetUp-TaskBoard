@@ -7,9 +7,14 @@ import './tasks-list.styles.scss';
 type TasksListProps = {
   taskList: any;
   removeTaskList: any;
+  onAddNewTask: any;
 };
 
-const TasksList: React.FC<TasksListProps> = ({ taskList, removeTaskList }) => {
+const TasksList: React.FC<TasksListProps> = ({
+  taskList,
+  removeTaskList,
+  onAddNewTask,
+}) => {
   const menuRef = useRef<HTMLDivElement>(null);
 
   const showMenu = (): void => {
@@ -17,24 +22,27 @@ const TasksList: React.FC<TasksListProps> = ({ taskList, removeTaskList }) => {
   };
 
   return (
-    <div className="tasks-list">
-      <div className="tasks-list-header">
-        {taskList[1]?.name}
-        <img onClick={showMenu} src={moreIcon} alt="More Icon" />
+    <>
+      <div className="tasks-list">
+        <div className="tasks-list-header">
+          {taskList[1]?.name}
+          <img onClick={showMenu} src={moreIcon} alt="More Icon" />
+        </div>
+        <div
+          className="tasks-list-header-menu"
+          hidden
+          ref={menuRef}
+          onClick={() => removeTaskList(taskList[0])}
+        >
+          Delete list
+        </div>
+        <AddTask onSelected={onAddNewTask} />
+        {Object.values(taskList[1]).map(
+          (task, index) =>
+            typeof task !== 'string' && <TaskItem task={task} key={index} />
+        )}
       </div>
-      <div
-        className="tasks-list-header-menu"
-        hidden
-        ref={menuRef}
-        onClick={() => removeTaskList(taskList[0])}
-      >
-        Delete list
-      </div>
-      <AddTask />
-      <TaskItem />
-      <TaskItem />
-      <TaskItem />
-    </div>
+    </>
   );
 };
 

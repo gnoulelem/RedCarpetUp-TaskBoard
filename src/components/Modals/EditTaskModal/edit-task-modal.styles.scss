@@ -7,9 +7,19 @@
     &-content {
         @include modal-content;
 
+        &-loader {
+            margin-top: 1vh;
+            display: flex;
+            justify-content: flex-end;
+        }
+
         &-header {
             display: flex;
             justify-content: space-between;
+
+            & > img {
+                cursor: pointer;
+            }
         }
 
         &-body {

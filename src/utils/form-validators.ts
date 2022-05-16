@@ -30,3 +30,11 @@ export const newListValidator = (newList: string): string[] => {
   }
   return errors;
 };
+
+export const taskHeadingValidator = (heading: string): string[] => {
+  const errors: string[] = [];
+  if(heading.length < 5) {
+    errors.push('New list name must be at least 3 characters long');
+  }
+  return errors
+};

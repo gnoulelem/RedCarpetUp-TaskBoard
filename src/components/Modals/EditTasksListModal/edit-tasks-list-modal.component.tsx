@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { AddButton, Loader } from 'components';
+import { AddButton } from 'components';
 import { newListValidator } from 'utils/form-validators';
 
 import closeIcon from 'assets/icons/close-line.svg';

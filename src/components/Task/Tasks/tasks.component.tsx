@@ -11,22 +11,41 @@ import './tasks.styles.scss';
 type TasksProps = {
   submitNewList: any;
   removeTaskList: any;
+  submitNewTask: any;
   taskLists: any;
 };
 
-const Tasks: React.FC<TasksProps> = ({ submitNewList, taskLists, removeTaskList }) => {
+const Tasks: React.FC<TasksProps> = ({
+  submitNewList,
+  taskLists,
+  submitNewTask,
+  removeTaskList,
+}) => {
   const [showEditTaskListModal, setShowEditTaskListModal] = useState(false);
+  const [selectedTaskList, setSelectedTaskList] = useState('');
 
   return (
     <>
       <div className="tasks">
         {taskLists &&
           Object.entries(taskLists).map((taskList, index) => (
-            <TasksList taskList={taskList} removeTaskList={removeTaskList} key={index} />
-          ))
-        }
+            <TasksList
+              onAddNewTask={() => {
+                setSelectedTaskList(taskList[0]);
+              }}
+              taskList={taskList}
+              removeTaskList={removeTaskList}
+              key={index}
+            />
+          ))}
       </div>
-      {/* <EditTaskModal /> */}
+      {selectedTaskList && (
+        <EditTaskModal
+          submitNewTask={submitNewTask}
+          onCloseModal={() => setSelectedTaskList('')}
+          selectedTaskList={selectedTaskList}
+        />
+      )}
       {showEditTaskListModal && (
         <EditTasksListModal
           onClose={() => setShowEditTaskListModal(false)}
